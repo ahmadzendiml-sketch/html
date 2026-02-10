@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>migrasi</title>
+    <title>Migrasi</title>
     <style>
         * {
             margin: 0;
@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #1a1a2e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
             min-height: 100vh;
             padding: 40px 20px;
             display: flex;
@@ -31,7 +31,7 @@
 
         .kotak {
             display: block;
-            background: #16213e;
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
             color: white;
             text-decoration: none;
             padding: 40px;
@@ -41,17 +41,105 @@
             text-align: center;
             border: 2px solid #0f3460;
             transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kotak::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(233, 69, 96, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .kotak:hover::before {
+            left: 100%;
         }
 
         .kotak:hover {
-            background: #0f3460;
-            transform: scale(1.02);
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            transform: translateY(-5px);
             border-color: #e94560;
+            box-shadow: 0 12px 32px rgba(233, 69, 96, 0.3);
+        }
+
+        .peringatan {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .peringatan-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .icon-warning {
+            font-size: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .peringatan-title {
+            color: #ffc107;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .peringatan-text {
+            color: #fff;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .peringatan-text strong {
+            color: #e94560;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #e94560 0%, #ffc107 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
         }
 
         @media (max-width: 480px) {
             .kotak {
-                padding: 30px;
+                padding: 30px 20px;
+                font-size: 1.2rem;
+            }
+
+            .peringatan {
+                padding: 15px 20px;
+            }
+
+            .peringatan-title {
+                font-size: 1rem;
+            }
+
+            .peringatan-text {
+                font-size: 0.9rem;
+            }
+
+            .icon-warning {
                 font-size: 1.2rem;
             }
         }
@@ -59,7 +147,20 @@
 </head>
 <body>
     <div class="container">
-        <a href="https://menujuramadhan.my.id/" target="_blank" class="kotak">KESINI DULU</a>
+        <a href="https://menujuramadhan.my.id/" target="_blank" class="kotak">
+            🔗 Klik Di Sini
+        </a>
+        
+        <div class="peringatan">
+            <div class="peringatan-header">
+                <span class="icon-warning">⚠️</span>
+                <span class="peringatan-title">PENTING!</span>
+            </div>
+            <p class="peringatan-text">
+                Link ini akan diganti <strong>segera migrasi</strong>. <br>
+                Harap <span class="highlight">berhati-hati</span> jika ada link palsu.
+            </p>
+        </div>
     </div>
 </body>
 </html>
